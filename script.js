@@ -1,31 +1,52 @@
 const body = document.querySelector('body');
 const gridContainer = document.querySelector('.grid');
 
-const gridItems = [];
+let gridItems = [];
 
-const GRID_SIZE = 64;
+let gridSize = 16;
 
-for (let i = 0; i < GRID_SIZE; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
-
-    const gridItemSize = calcGridItemSize(gridContainer.offsetWidth);
-
-    gridItem.style.width = `${gridItemSize}px`;
-    gridItem.style.height = 'auto';
-    
-    gridItem.style.border = '1px solid black';
-
-    gridItems.push(gridItem);
-    gridContainer.appendChild(gridItem);
-}
+createGrid();
 
 function calcGridItemSize(gridWidth) {
-    return gridWidth / Math.sqrt(GRID_SIZE);
+    return gridWidth / Math.sqrt(gridSize);
 }
 
-gridItems.forEach(item => item.addEventListener('mouseover', e => {
-    if(item.style.backgroundColor !== 'black') {
-        item.style.backgroundColor = 'black';
+const askSizeBtn = document.querySelector('.size-btn');
+
+askSizeBtn.addEventListener('click', e => {
+    gridSize = Number(prompt("Enter a new grid size (a single value between 1 and 100): "));
+    createGrid();
+})
+
+function clearGrid() {
+    gridItems.forEach(item => item.remove());
+    gridItems = [];
+}
+
+function createGrid() {
+    clearGrid();
+
+    for (let i = 0; i < gridSize; i++) {
+        const gridItem = document.createElement('div');
+
+        const gridItemSize = calcGridItemSize(gridContainer.offsetWidth);
+
+        gridItem.style.width = `${gridItemSize}px`;
+        gridItem.style.height = 'auto';
+        
+        gridItem.style.border = '1px solid black';
+
+        gridItems.push(gridItem);
+        gridContainer.appendChild(gridItem);
     }
-}));
+
+    setHoverEffect();
+}
+
+function setHoverEffect() {
+    gridItems.forEach(item => item.addEventListener('mouseover', e => {
+        if(item.style.backgroundColor !== 'black') {
+            item.style.backgroundColor = 'black';
+        }
+    }));
+}
