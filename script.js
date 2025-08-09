@@ -14,7 +14,11 @@ function calcGridItemSize(gridWidth) {
 const askSizeBtn = document.querySelector('.size-btn');
 
 askSizeBtn.addEventListener('click', e => {
-    gridSize = Number(prompt("Enter a new grid size (a single value between 1 and 100): "));
+    do {
+        gridSize = Number(prompt("Enter a new grid size (a single value between 1 and 100): "));
+
+    } while(gridSize <= 0 || gridSize > 100);
+
     createGrid();
 })
 
