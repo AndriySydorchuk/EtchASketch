@@ -22,11 +22,25 @@ body {
     height: 400px;
 }
 
+.btns {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .size-btn {
     padding: 16px 32px;
-    border: 0;
+    border: 1px solid black;
     color: white;
     background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.clear-btn {
+    padding: 16px 32px;
+    border: 1px solid black;
+    background-color: white;
     border-radius: 10px;
     cursor: pointer;
 }

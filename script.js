@@ -22,13 +22,13 @@ askSizeBtn.addEventListener('click', e => {
     createGrid();
 })
 
-function clearGrid() {
+function deleteGrid() {
     gridItems.forEach(item => item.remove());
     gridItems = [];
 }
 
 function createGrid() {
-    clearGrid();
+    deleteGrid();
 
     for (let i = 0; i < gridSize; i++) {
         const gridItem = document.createElement('div');
@@ -54,3 +54,11 @@ function setHoverEffect() {
         }
     }));
 }
+
+const clearBtn = document.querySelector('.clear-btn');
+
+clearBtn.addEventListener('click', e => {
+    gridItems.forEach(item => {
+        item.style.backgroundColor = 'white';
+    });
+});
