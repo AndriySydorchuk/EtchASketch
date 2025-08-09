@@ -15,8 +15,11 @@ const askSizeBtn = document.querySelector('.size-btn');
 
 askSizeBtn.addEventListener('click', e => {
     do {
-        gridSize = Number(prompt("Enter a new grid size (a single value between 1 and 100): "));
+        gridSize = prompt("Enter a new grid size (a single value between 1 and 100): ");
+        
+        if(gridSize === null) return; //cancel button is pressed
 
+        gridSize = Number(gridSize);
     } while(gridSize <= 0 || gridSize > 100);
 
     createGrid();
