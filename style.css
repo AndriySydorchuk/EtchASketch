@@ -46,6 +46,26 @@ body {
     padding: 0;
 }
 
+.color-btn {
+    padding: 16px 32px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.rainbow-btn {
+    background: #833AB4;
+    background: linear-gradient(198deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    padding: 16px 32px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
 .size-btn {
     padding: 16px 32px;
     border: 1px solid black;
@@ -53,6 +73,7 @@ body {
     background-color: black;
     border-radius: 10px;
     cursor: pointer;
+    width: 100%;
 }
 
 .clear-btn {

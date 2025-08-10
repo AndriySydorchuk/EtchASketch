@@ -74,3 +74,26 @@ colorPicker.addEventListener('change', e => {
     pickedColor = e.target.value;
     setHoverEffect(pickedColor);
 });
+
+const rainbowBtn = document.querySelector('.rainbow-btn');
+
+rainbowBtn.addEventListener('click', e => {
+    gridItems.forEach(item => item.addEventListener('mouseover', e => {
+        item.style.backgroundColor = getRandomColor();
+    }));
+});
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+const colorBtn = document.querySelector('.color-btn');
+
+colorBtn.addEventListener('click', e => {
+    setHoverEffect(colorPicker.value);
+});
