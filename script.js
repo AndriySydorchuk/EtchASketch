@@ -5,7 +5,10 @@ let gridItems = [];
 
 let gridSize = 16;
 
+let pickedColor = 'black';
+
 createGrid();
+setHoverEffect(pickedColor);
 
 function calcGridItemSize(gridWidth) {
     return gridWidth / Math.sqrt(gridSize);
@@ -23,6 +26,7 @@ askSizeBtn.addEventListener('click', e => {
     } while(gridSize <= 0 || gridSize > 100);
 
     createGrid();
+    setHoverEffect(pickedColor);
 })
 
 function deleteGrid() {
@@ -46,14 +50,12 @@ function createGrid() {
         gridItems.push(gridItem);
         gridContainer.appendChild(gridItem);
     }
-
-    setHoverEffect();
 }
 
-function setHoverEffect() {
+function setHoverEffect(color) {
     gridItems.forEach(item => item.addEventListener('mouseover', e => {
-        if(item.style.backgroundColor !== 'black') {
-            item.style.backgroundColor = 'black';
+        if(item.style.backgroundColor !== color) {
+            item.style.backgroundColor = color;
         }
     }));
 }
@@ -64,4 +66,11 @@ clearBtn.addEventListener('click', e => {
     gridItems.forEach(item => {
         item.style.backgroundColor = 'white';
     });
+});
+
+const colorPicker = document.querySelector('#color-picker');
+
+colorPicker.addEventListener('change', e => {
+    pickedColor = e.target.value;
+    setHoverEffect(pickedColor);
 });
