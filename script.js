@@ -71,6 +71,7 @@ clearBtn.addEventListener('click', e => {
 const colorPicker = document.querySelector('#color-picker');
 
 colorPicker.addEventListener('change', e => {
+    toggleBtnStyle(e, colorBtn, rainbowBtn);
     pickedColor = e.target.value;
     setHoverEffect(pickedColor);
 });
@@ -78,6 +79,8 @@ colorPicker.addEventListener('change', e => {
 const rainbowBtn = document.querySelector('.rainbow-btn');
 
 rainbowBtn.addEventListener('click', e => {
+    toggleBtnStyle(e, colorBtn, rainbowBtn);
+
     gridItems.forEach(item => item.addEventListener('mouseover', e => {
         item.style.backgroundColor = getRandomColor();
     }));
@@ -95,5 +98,24 @@ function getRandomColor() {
 const colorBtn = document.querySelector('.color-btn');
 
 colorBtn.addEventListener('click', e => {
+    toggleBtnStyle(e, colorBtn, rainbowBtn);
+
     setHoverEffect(colorPicker.value);
 });
+
+function toggleBtnStyle(event, colorBtn, rainbowBtn) {
+    if(event.target.classList.contains('rainbow-btn')) {
+        //click on rainbow
+        colorBtn.classList.remove('black-btn');
+        colorBtn.classList.add('white-btn');
+        rainbowBtn.classList.remove('white-btn');
+        rainbowBtn.classList.add('rainbow');
+    } else {
+        //click on color
+        rainbowBtn.classList.remove('rainbow');
+        rainbowBtn.classList.add('white-btn');
+        colorBtn.classList.remove('white-btn');
+        colorBtn.classList.add('black-btn');
+    }
+
+}
